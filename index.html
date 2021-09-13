@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html lang="en-us"> 
+<html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | WebGL Test AR</title>
+    <title>Unity WebGL Player | Avenues-AR-Clip</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
-    <script src="js/three.min.js"></script>
-    <link rel="stylesheet" href="css/index.css">
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Avenues-AR-Clip-Build.json", {onProgress: UnityProgress});
+    </script>
   </head>
-
   <body>
-    <div id="images">
-			<img id="earth" src="images\earth.jpg" />			<img id="moon" src="images\moon.jpg" />			<img id="MexicanSkull" src="images\MexicanSkull.jpg" />
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">Avenues-AR-Clip</div>
+      </div>
     </div>
-    <div id="unityContainer"></div>    
-    <script src="js/app.js"></script>
   </body>
 </html>
