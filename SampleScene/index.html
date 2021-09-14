@@ -17,25 +17,11 @@ init: function () {
 var elem = document.documentElement;
 var marker = document.querySelector("#marker");
 var fullbutton = document.querySelector("#fullscreen");
-var button = document.querySelector("#mutebutton");
-var Video_3 = document.querySelector("#Video_Asset_3");
 marker.addEventListener("markerFound", function (evt) {
 markerFound = 1;
-Video_3.play();
 });
 marker.addEventListener("markerLost", function (evt) {
 markerFound = 0;
-Video_3.pause();
-});
-button.addEventListener("click", function(evt){
-console.log("button clicked")
-if(Video_3.muted==true){
-button.innerHTML="Mute";
-Video_3.muted=false;
-}else{
-button.innerHTML="Unmute";
-Video_3.muted=true;
-}
 });
 fullbutton.addEventListener("click", function (evt) {
                 if (fullscreen == 0) {
@@ -100,11 +86,6 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 
 <!-- BEGIN: Middle HTML -->
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
-<div style='position: absolute; bottom: 10px; right: 30px; width:100%; text-align: center; z-index: 1;'>
-      <button id="mutebutton" style='position: absolute; bottom: 10px'>
-          Unmute
-      </button>
-  </div>
 <div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'>
         <input type="image" id="fullscreen" src="../fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'>
         </input>
@@ -116,8 +97,7 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 
 <!-- BEGIN: Unity Compiled Assets -->
 <a-assets>
-<video id="Video_Asset_3" autoplay="false" loop crossorigin="anonymous" src="videos/toddboosted2.mp4" webkit-playsinline playsinline controls muted></video>
-<a-asset-item id="Model_Asset_obj_4" src="models/GlobeWithLogoV4.obj"></a-asset-item>
+<a-asset-item id="Model_Asset_obj_3" src="models/GlobeWithLogoV4.obj"></a-asset-item>
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
@@ -131,9 +111,7 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 ></a-plane>
 <a-plane src="textures/Open-House_TUTORIAL_Right.png" id="Plane (2)_2" class="intersectable" width="1" height="0.5625" position="1 1 -0.38" rotation="0 -30.00001 0" color="#FFFFFF" transparent=True
 ></a-plane>
-<a-video src="#Video_Asset_3" id="Video_3" class="intersectable" width="0.3" height="0.5625" position="-0.733 1 -0.509" rotation="0 -330 0" color="#FFFFFF" transparent=False
-></a-video>
-<a-entity obj-model="obj: #Model_Asset_obj_4; mtl: #Model_Asset_mtl_4" id="Model_4" class="intersectable" scale="0.0075 0.0075 0.0075" position="0 0.5 0" rotation="0 0 0" color="#ffffff" transparent=False
+<a-entity obj-model="obj: #Model_Asset_obj_3; mtl: #Model_Asset_mtl_3" id="Model_3" class="intersectable" scale="0.0075 0.0075 0.0075" position="0 0.5 0" rotation="0 0 0" color="#ffffff" transparent=False
 ></a-entity>
 <!-- END: Unity Compiled Objects -->
 
