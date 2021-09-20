@@ -20,10 +20,9 @@ init: function () {
 	var button = document.querySelector("#mutebutton");
 	
 	var intro_1 = document.querySelector("#intro_1");
-	var intro_1_bg = document.querySelector("#intro_1_bg");
+	var intro_1_parent = document.querySelector("#intro_1_parent");
 	var intro_2 = document.querySelector("#intro_2");
-	var intro_2_bg = document.querySelector("#intro_2_bg");
-	var intro_logo_2 = document.querySelector("#intro_logo_2");
+	var intro_2_parent = document.querySelector("#intro_2_parent");
 	
 	var Video_3 = document.querySelector("#Video_Asset_3");
 	var Video_4 = document.querySelector("#Video_Asset_4");
@@ -79,16 +78,13 @@ init: function () {
 	});
 	intro_1.addEventListener("click", function (evt) {
 		console.log("BUTTON INTRO clicked");
-		intro_1.parentNode.removeChild( intro_1 );
-		intro_1_bg.parentNode.removeChild( intro_1_bg );
+		intro_1_parent.parentNode.style.display = "none";
 		//intro_1.style.visibility = 'hidden';
 		//intro_1.style.visibility = 'visible';
 	});
 	intro_2.addEventListener("click", function (evt) {
 		console.log("BUTTON INTRO clicked");
-		intro_2.parentNode.removeChild( intro_2 );
-		intro_2_bg.parentNode.removeChild( intro_2_bg );
-		intro_logo_2.parentNode.removeChild( intro_logo_2 );
+		intro_2_parent.parentNode.style.display = "none";
 		//intro_1.style.visibility = 'hidden';
 		//intro_1.style.visibility = 'visible';
 	});
@@ -131,7 +127,7 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
   </button>
 </div>
 
-<div style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center;'>
+<div id="intro_2_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center;'>
 	<input type="image" id="intro_2_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%;'>
 	</input>
 	<div style='position: absolute; bottom: 50px; left: 50px; width:100%; text-align: center;'>
@@ -144,7 +140,7 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 	</div>
 </div>
 
-<div style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+<div id="intro_1_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
 	<input type="image" id="intro_1_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%;'>
 	</input>
 	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
