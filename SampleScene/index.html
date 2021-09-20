@@ -19,6 +19,7 @@ init: function () {
 	var fullbutton = document.querySelector("#fullscreen");
 	var button = document.querySelector("#mutebutton");
 	var intro_1 = document.querySelector("#intro_1");
+	var intro_1_bg = document.querySelector("#intro_1_bg");
 	var Video_3 = document.querySelector("#Video_Asset_3");
 	var Video_4 = document.querySelector("#Video_Asset_4");
 	marker.addEventListener("markerFound", function (evt) {
@@ -72,7 +73,9 @@ init: function () {
 		}
 	});
 	intro_1.addEventListener("click", function (evt) {
-		intro_1.style.visibility = 'hidden';
+		intro_1.parentNode.removeChild( intro_1 );
+		intro_1_bg.parentNode.removeChild( intro_1_bg );
+		//intro_1.style.visibility = 'hidden';
 		//intro_1.style.visibility = 'visible';
 	});
 },
@@ -111,6 +114,10 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
   <button id="mutebutton" style='position: absolute; bottom: 10px'>
 	  Unmute
   </button>
+</div>
+<div style='position: absolute; center: 0px; left: 0px; width:300%; height:300%; text-align: center;'>
+	<input type="image" id="intro_1_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%;'>
+	</input>
 </div>
 <div style='position: absolute; center: 0px; left: 0px; width:100%; height:100%; text-align: center;'>
 	<input type="image" id="intro_1" src="../SampleScene/images/intro_1.png" style='position: absolute; center: 0px; right: 0px; width:100%; height:100%;'>
