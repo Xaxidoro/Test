@@ -18,8 +18,13 @@ init: function () {
 	var marker = document.querySelector("#marker");
 	var fullbutton = document.querySelector("#fullscreen");
 	var button = document.querySelector("#mutebutton");
+	
 	var intro_1 = document.querySelector("#intro_1");
 	var intro_1_bg = document.querySelector("#intro_1_bg");
+	var intro_2 = document.querySelector("#intro_2");
+	var intro_2_bg = document.querySelector("#intro_2_bg");
+	var intro_logo_2 = document.querySelector("#intro_logo_2");
+	
 	var Video_3 = document.querySelector("#Video_Asset_3");
 	var Video_4 = document.querySelector("#Video_Asset_4");
 	marker.addEventListener("markerFound", function (evt) {
@@ -79,6 +84,14 @@ init: function () {
 		//intro_1.style.visibility = 'hidden';
 		//intro_1.style.visibility = 'visible';
 	});
+	intro_2.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_2.parentNode.removeChild( intro_2 );
+		intro_2_bg.parentNode.removeChild( intro_2_bg );
+		intro_logo_2.parentNode.removeChild( intro_logo_2 );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
 },
 tick: function (totalTime, deltaTime) {
 var dTime = deltaTime / 1000;
@@ -117,14 +130,29 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 	  Unmute
   </button>
 </div>
+
+<div style='position: absolute; center: 0px; left: 0px; width:300%; height:300%; text-align: center;'>
+	<input type="image" id="intro_2_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%;'>
+	</input>
+</div>
+<div style='position: absolute; bottom: 50px; left: 50px; width:100%; text-align: center;'>
+	<input type="image" id="intro_logo_2" src="../SampleScene/images/intro_logo.png" style='position: absolute; bottom: 0px; left: 50px; max-width:500px; max-height:300px; width:auto height:auto'>
+	</input>
+</div>
+<div style='position: relative; bottom: 0px; left: 0px; top: 0px; right: 0px; height:100%; text-align: center;'>
+	<input type="image" id="intro_2" src="../SampleScene/images/intro_2.png" style='position: absolute; top: 500px; right: 200px; max-width:400px; max-height:200px; width:auto height:auto'>
+	</input>
+</div>
+
 <div style='position: absolute; center: 0px; left: 0px; width:300%; height:300%; text-align: center;'>
 	<input type="image" id="intro_1_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%;'>
 	</input>
 </div>
 <div style='position: relative; bottom: 0px; left: 0px; top: 0px; right: 0px; height:100%; text-align: center;'>
-	<input type="image" id="intro_1" src="../SampleScene/images/intro_1.png" style='position: absolute; center: 0px; right: 0px; max-width:100%; max-height:100%; width:auto height:auto'>
+	<input type="image" id="intro_1" src="../SampleScene/images/intro_1.png" style='position: absolute; center: 0px; right: 0px; max-width:80%; max-height:80%; width:auto height:auto'>
 	</input>
 </div>
+
 <div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'>
 	<input type="image" id="fullscreen" src="../fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'>
 	</input>
