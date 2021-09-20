@@ -73,7 +73,7 @@ init: function () {
 		}
 	});
 	intro_1.addEventListener("click", function (evt) {
-		console.log("BUTTON INTRO clicked")
+		console.log("BUTTON INTRO clicked");
 		intro_1.parentNode.removeChild( intro_1 );
 		intro_1_bg.parentNode.removeChild( intro_1_bg );
 		//intro_1.style.visibility = 'hidden';
@@ -87,24 +87,24 @@ if (markerFound == 1) {
 }
 
 function bezierEvaluate(p0, p1, p2, p3, t) {
-                var u = (1 - t);
-                var uu = u * u;
-                var uuu = u * u * u;
-                var tt = t * t;
-                var ttt = t * t * t;
-                //B(t) = (1-t)^3*P0 + 3*(1-t)^2*t*P1 + 3*(1-t)*t^2*P2 + t^3*P3 , 0 < t < 1
-                return (uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3);
+			var u = (1 - t);
+			var uu = u * u;
+			var uuu = u * u * u;
+			var tt = t * t;
+			var ttt = t * t * t;
+			//B(t) = (1-t)^3*P0 + 3*(1-t)^2*t*P1 + 3*(1-t)*t^2*P2 + t^3*P3 , 0 < t < 1
+			return (uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3);
 
-            }
-           function bezierPath(p0, p1, p2, p3, t) {
-                return new THREE.Vector3(
-                    bezierEvaluate(p0.x, p1.x, p2.x, p3.x, t),
-                    bezierEvaluate(p0.y, p1.y, p2.y, p3.y, t),
-                    bezierEvaluate(p0.z, p1.z, p2.z, p3.z, t)
-                );
-            }
+		}
+	   function bezierPath(p0, p1, p2, p3, t) {
+			return new THREE.Vector3(
+				bezierEvaluate(p0.x, p1.x, p2.x, p3.x, t),
+				bezierEvaluate(p0.y, p1.y, p2.y, p3.y, t),
+				bezierEvaluate(p0.z, p1.z, p2.z, p3.z, t)
+			);
+		}
 
-        }
+	}
 });
 </script>
 <!-- END: Unity Compiled Events -->
