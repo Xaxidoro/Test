@@ -78,13 +78,13 @@ init: function () {
 	});
 	intro_1.addEventListener("click", function (evt) {
 		console.log("BUTTON INTRO clicked");
-		intro_1_parent.parentNode.style.display = "none";
+		intro_1_parent.parentNode.removeChild( intro_1_parent );
 		//intro_1.style.visibility = 'hidden';
 		//intro_1.style.visibility = 'visible';
 	});
 	intro_2.addEventListener("click", function (evt) {
 		console.log("BUTTON INTRO clicked");
-		intro_2_parent.parentNode.style.display = "none";
+		intro_2_parent.parentNode.removeChild( intro_2_parent );
 		//intro_1.style.visibility = 'hidden';
 		//intro_1.style.visibility = 'visible';
 	});
