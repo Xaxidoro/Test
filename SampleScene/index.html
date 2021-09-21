@@ -23,6 +23,8 @@ init: function () {
 	var intro_1_parent = document.querySelector("#intro_1_parent");
 	var intro_2 = document.querySelector("#intro_2");
 	var intro_2_parent = document.querySelector("#intro_2_parent");
+	var intro_3 = document.querySelector("#intro_3");
+	var intro_3_parent = document.querySelector("#intro_3_parent");
 	
 	var Video_3 = document.querySelector("#Video_Asset_3");
 	var Video_4 = document.querySelector("#Video_Asset_4");
@@ -88,6 +90,12 @@ init: function () {
 		//intro_1.style.visibility = 'hidden';
 		//intro_1.style.visibility = 'visible';
 	});
+	intro_3.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_3_parent.parentNode.removeChild( intro_3_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
 },
 tick: function (totalTime, deltaTime) {
 var dTime = deltaTime / 1000;
@@ -125,6 +133,19 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
   <button id="mutebutton" style='position: absolute; bottom: 10px'>
 	  Unmute
   </button>
+</div>
+
+<div id="intro_3_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center;'>
+	<input type="image" id="intro_3_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%;'>
+	</input>
+	<div style='position: absolute; bottom: 50px; left: 50px; width:100%; text-align: center;'>
+		<input type="image" id="intro_logo_3" src="../SampleScene/images/intro_logo.png" style='position: absolute; bottom: 0px; left: 50px; max-width:500px; max-height:300px; width:auto height:auto'>
+		</input>
+	</div>
+	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
+		<input type="image" id="intro_3" src="../SampleScene/images/intro_3.png" style='position: absolute; bottom: 25%; left: 25%; max-width:50%; max-height:50%; width:auto height:auto'>
+		</input>
+	</div>
 </div>
 
 <div id="intro_2_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center;'>
