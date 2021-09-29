@@ -142,7 +142,7 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 </div>
 
 <div id="intro_3_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
-	<input type="image" id="intro_3_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%; z-index: 1;'>
+	<input type="image" id="intro_3_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width:300%; height:300%; z-index: 1;'>
 	</input>
 	<div style='position: absolute; bottom: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
 		<input type="image" id="intro_logo_2" src="../SampleScene/images/intro_logo.png" style='position: absolute; bottom: 10%; left: 10%; max-width:20%; max-height:13%; width:auto height:auto'>
@@ -152,10 +152,12 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 		<input type="image" id="intro_3" src="../SampleScene/images/intro_3.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width:50%; max-height:50%; width:auto height:auto'>
 		</input>
 	</div>
+	<input type="image" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:10%; max-height:5%; z-index: 1; width:auto height:auto'>
+	</input>
 </div>
 
 <div id="intro_2_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
-	<input type="image" id="intro_2_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%; z-index: 1;'>
+	<input type="image" id="intro_2_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);width:300%; height:300%; z-index: 1;'>
 	</input>
 	<div style='position: absolute; bottom: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
 		<input type="image" id="intro_logo_2" src="../SampleScene/images/intro_logo.png" style='position: absolute; bottom: 10%; left: 10%; max-width:20%; max-height:13%; width:auto height:auto'>
@@ -165,15 +167,19 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 		<input type="image" id="intro_2" src="../SampleScene/images/intro_2.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width:50%; max-height:50%; width:auto height:auto'>
 		</input>
 	</div>
+	<input type="image" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:10%; max-height:5%; z-index: 1; width:auto height:auto'>
+	</input>
 </div>
 
 <div id="intro_1_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
-	<input type="image" id="intro_1_bg" src="../SampleScene/images/bg.png" style='position: absolute; center: 0px; right: 0px; width:300%; height:300%; z-index: 1;'>
+	<input type="image" id="intro_1_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width:300%; height:300%; z-index: 1;'>
 	</input>
 	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
 		<input type="image" id="intro_1" src="../SampleScene/images/intro_1.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0px auto 0px auto; max-width:100%; max-height:100%; width:auto height:auto'>
 		</input>
 	</div>
+	<input type="image" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:10%; max-height:5%; z-index: 1; width:auto height:auto'>
+	</input>
 </div>
 
 
@@ -201,11 +207,11 @@ function bezierEvaluate(p0, p1, p2, p3, t) {
 <!-- END: Add Image Target (marker) -->
 
 <!-- BEGIN: Unity Compiled Objects -->
-<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1" height="0.5625" position="0 0.1 -0.2" rotation="270 0 0" color="#FFFFFF" transparent=False
+<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.1 -0.2" rotation="270 0 0" color="#FFFFFF" transparent=False
 ></a-video>
-<a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.3" height="0.5625" position="-0.733 0.2 -0.2" rotation="300.005 -270 -91.189" color="#FFFFFF" transparent=True
+<a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.45" height="0.84375" position="-1.1 0.2 -0.2" rotation="300.005 -270 -91.189" color="#FFFFFF" transparent=True
 ></a-video>
-<a-entity obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.0075 0.0075 0.0075" position="0 0.5 0" rotation="270 0 0"></a-entity>
+<a-entity obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="270 0 0"></a-entity>
 <!-- END: Unity Compiled Objects -->
 
 <!-- BEGIN: Bottom HTML -->
