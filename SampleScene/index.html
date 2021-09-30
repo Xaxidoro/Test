@@ -33,7 +33,7 @@ init: function () {
 		Video_3.play();
 		Video_4.play();
 		
-		var userAgent = window.navigator.userAgent,
+		/*var userAgent = window.navigator.userAgent,
 		  platform = window.navigator.platform,
 		  macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
 		  windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
@@ -44,7 +44,7 @@ init: function () {
 		} else {
 			console.log("Video 4 not repositioned");
 			Video_4.style.position = "0 0.1 -0.2";
-		}
+		}*/
 	});
 	marker.addEventListener("markerLost", function (evt) {
 		markerFound = 0;
@@ -220,11 +220,11 @@ tick: function (totalTime, deltaTime) {
 <!-- END: Add Image Target (marker) -->
 
 <!-- BEGIN: Unity Compiled Objects -->
-<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.1 -0.2" rotation="270 0 0" color="#FFFFFF" transparent=False
+<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.1 -1.2" rotation="270 0 0" color="#FFFFFF" transparent=False
 ></a-video>
-<a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.45" height="0.84375" position="-1.1 0.2 -0.2" rotation="300.005 -270 -91.189" color="#FFFFFF" transparent=True
+<a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.45" height="0.84375" position="-1.1 0.2 -1.2" rotation="300.005 -270 -91.189" color="#FFFFFF" transparent=True
 ></a-video>
-<a-entity obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="270 0 0"></a-entity>
+<a-entity obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 -1" rotation="270 0 0"></a-entity>
 <!-- END: Unity Compiled Objects -->
 
 <!-- BEGIN: Bottom HTML -->
