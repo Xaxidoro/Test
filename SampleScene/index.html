@@ -49,6 +49,8 @@ init: function () {
 		markerFound = 0;
 		Video_3.pause();
 		Video_4.pause();
+
+		alert(getOS());
 	});
 	button.addEventListener("click", function(evt){
 		console.log("button clicked")
@@ -137,6 +139,28 @@ tick: function (totalTime, deltaTime) {
 			bezierEvaluate(p0.y, p1.y, p2.y, p3.y, t),
 			bezierEvaluate(p0.z, p1.z, p2.z, p3.z, t)
 		);
+	}
+	function getOS() {
+	  var userAgent = window.navigator.userAgent,
+		  platform = window.navigator.platform,
+		  macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+		  windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+		  iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+		  os = null;
+
+	  if (macosPlatforms.indexOf(platform) !== -1) {
+		os = 'Mac OS';
+	  } else if (iosPlatforms.indexOf(platform) !== -1) {
+		os = 'iOS';
+	  } else if (windowsPlatforms.indexOf(platform) !== -1) {
+		os = 'Windows';
+	  } else if (/Android/.test(userAgent)) {
+		os = 'Android';
+	  } else if (!os && /Linux/.test(platform)) {
+		os = 'Linux';
+	  }
+
+	  return os;
 	}
 
 }
