@@ -38,9 +38,9 @@ init: function () {
 		  os = 'iP',
 		  osDesk = 'Mac';
 		if (platform.indexOf(os) != -1) {
-			Video_4.setAttribute('position','0 0.1 -1.7');
+			document.getElementById("Video_4").setAttribute('position','0 0.1 -1.7');
 		} else if (platform.indexOf(osDesk) != -1) {
-			Video_4.setAttribute('position','0 0.1 -1.7');
+			document.getElementById("Video_4").setAttribute('position','0 0.1 -1.7');
 		} else {
 			console.log("Video 4 not repositioned");
 		}
