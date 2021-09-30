@@ -39,8 +39,12 @@ init: function () {
 		  osDesk = 'Mac';
 		if (platform.indexOf(os) != -1) {
 			document.getElementById("Video_4").setAttribute('position','0 0.1 -1.7');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.2 -1.7');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
 		} else if (platform.indexOf(osDesk) != -1) {
 			document.getElementById("Video_4").setAttribute('position','0 0.1 -1.7');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.2 -1.7');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
 		} else {
 			console.log("Video 4 not repositioned");
 		}
@@ -227,7 +231,7 @@ tick: function (totalTime, deltaTime) {
 ></a-video>
 <a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.45" height="0.84375" position="-1.1 0.2 -0.2" rotation="300.005 -270 -91.189" color="#FFFFFF" transparent=True
 ></a-video>
-<a-entity obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="270 0 0"></a-entity>
+<a-entity id="obj_1" obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="270 0 0"></a-entity>
 <!-- END: Unity Compiled Objects -->
 
 <!-- BEGIN: Bottom HTML -->
