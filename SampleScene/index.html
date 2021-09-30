@@ -32,6 +32,19 @@ init: function () {
 		markerFound = 1;
 		Video_3.play();
 		Video_4.play();
+		
+		var userAgent = window.navigator.userAgent,
+		  platform = window.navigator.platform,
+		  macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+		  windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+		  iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+		  os = null;
+		if (iosPlatforms.indexOf(platform) !== -1) {
+			Video_4.style.position = "0 0.1 -2.2";
+		} else {
+			console.log("Video 4 not repositioned");
+			Video_4.style.position = "0 0.1 -0.2";
+		}
 	});
 	marker.addEventListener("markerLost", function (evt) {
 		markerFound = 0;
@@ -104,42 +117,30 @@ init: function () {
 	});
 },
 tick: function (totalTime, deltaTime) {
-var dTime = deltaTime / 1000;
+	var dTime = deltaTime / 1000;
 
-if (markerFound == 1) {
-	var userAgent = window.navigator.userAgent,
-      platform = window.navigator.platform,
-      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-      windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
-      iosPlatforms = ['iPhone', 'iPad', 'iPod'],
-      os = null;
-	if (iosPlatforms.indexOf(platform) !== -1) {
-		document.getElementById("Video_4").style.position = "0 0.1 -2.2";
-	} else {
-		console.log("Video 4 not repositioned");
-		document.getElementById("Video_4").style.position = "0 0.1 -0.2";
+	if (markerFound == 1) {
 	}
+
+	function bezierEvaluate(p0, p1, p2, p3, t) {
+		var u = (1 - t);
+		var uu = u * u;
+		var uuu = u * u * u;
+		var tt = t * t;
+		var ttt = t * t * t;
+		//B(t) = (1-t)^3*P0 + 3*(1-t)^2*t*P1 + 3*(1-t)*t^2*P2 + t^3*P3 , 0 < t < 1
+		return (uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3);
+
+	}
+	function bezierPath(p0, p1, p2, p3, t) {
+		return new THREE.Vector3(
+			bezierEvaluate(p0.x, p1.x, p2.x, p3.x, t),
+			bezierEvaluate(p0.y, p1.y, p2.y, p3.y, t),
+			bezierEvaluate(p0.z, p1.z, p2.z, p3.z, t)
+		);
+	}
+
 }
-
-function bezierEvaluate(p0, p1, p2, p3, t) {
-			var u = (1 - t);
-			var uu = u * u;
-			var uuu = u * u * u;
-			var tt = t * t;
-			var ttt = t * t * t;
-			//B(t) = (1-t)^3*P0 + 3*(1-t)^2*t*P1 + 3*(1-t)*t^2*P2 + t^3*P3 , 0 < t < 1
-			return (uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3);
-
-		}
-	   function bezierPath(p0, p1, p2, p3, t) {
-			return new THREE.Vector3(
-				bezierEvaluate(p0.x, p1.x, p2.x, p3.x, t),
-				bezierEvaluate(p0.y, p1.y, p2.y, p3.y, t),
-				bezierEvaluate(p0.z, p1.z, p2.z, p3.z, t)
-			);
-		}
-
-	}
 });
 </script>
 <!-- END: Unity Compiled Events -->
