@@ -41,7 +41,9 @@ init: function () {
 		  os = null;
 		if (iosPlatforms.indexOf(platform) !== -1) {
 			Video_4.setAttribute('position','0 0.1 -1.7')
-		} else {
+		} else if (/Android/.test(userAgent)) {
+			console.log("Video 4 not repositioned");
+		}else {
 			console.log("Video 4 not repositioned");
 		}
 	});
@@ -57,18 +59,7 @@ init: function () {
 			  iosPlatforms = ['iPhone', 'iPad', 'iPod'],
 			  os = null;
 
-		  if (macosPlatforms.indexOf(platform) !== -1) {
-			os = 'Mac OS';
-		  } else if (iosPlatforms.indexOf(platform) !== -1) {
-			os = 'iOS';
-		  } else if (windowsPlatforms.indexOf(platform) !== -1) {
-			os = 'Windows';
-		  } else if (/Android/.test(userAgent)) {
-			os = 'Android';
-		  } else if (!os && /Linux/.test(platform)) {
-			os = 'Linux';
-		  }
-		alert(os);
+		alert(platform);
 	});
 	button.addEventListener("click", function(evt){
 		console.log("button clicked")
