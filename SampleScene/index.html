@@ -40,9 +40,9 @@ init: function () {
 		  iosPlatforms = ['iPhone', 'iPad', 'iPod'],
 		  os = null;
 		if (iosPlatforms.indexOf(platform) !== -1) {
-			Video_4.object3D.position.set(0, 0.1, -1.7);
+			Video_4.setAttribute('position','0 0.1 -1.7')
 		} else {
-			//console.log("Video 4 not repositioned");
+			console.log("Video 4 not repositioned");
 		}
 	});
 	marker.addEventListener("markerLost", function (evt) {
