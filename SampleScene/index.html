@@ -12,6 +12,15 @@
 <!-- BEGIN: Unity Compiled Events -->
 <script>
 var markerFound = 0;
+AFRAME.registerComponent("foo", {
+	init: function() {
+		this.el.addEventListener("materialtextureloaded", e => {
+			let material = this.el.getObject3D("mesh").material;
+			material.map.format = THREE.RGBAFormat;
+			material.map.needsUpdate = true;
+		});
+	}
+});
 AFRAME.registerComponent('button', {
 init: function () {
 	var elem = document.documentElement;
@@ -231,8 +240,7 @@ tick: function (totalTime, deltaTime) {
 ></a-video>
 <a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.001" height="0.001" position="0 0 0" rotation="0 0 0" color="#FFFFFF" transparent=True
 ></a-video>
-<a-plane id="Video_3_plane" position="-1.1 0.2 -0.2" rotation="300.005 -270 -91.189" width="0.45" height="0.84375" color="#FFFFFF" transparent=True material="src: https://xaxidoro-bucket.s3.amazonaws.com/Malcolm-1.webm; transparent: true;"
-        foo
+<a-plane id="Video_3_plane" position="-1.1 0.2 -0.2" rotation="300.005 -270 -91.189" width="0.45" height="0.84375" color="#FFFFFF" transparent=True material="src: https://xaxidoro-bucket.s3.amazonaws.com/Malcolm-1.webm; transparent: true;" foo
 ></a-plane>
 <a-entity id="obj_1" obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="270 0 0"></a-entity>
 <!-- END: Unity Compiled Objects -->
