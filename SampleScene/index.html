@@ -253,34 +253,6 @@ tick: function (totalTime, deltaTime) {
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'> -->
 <a-scene mindar-image="imageTargetSrc: avenues.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
-<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
-<!-- END: Middle HTML -->
-
-<!-- BEGIN: Unity Compiled Assets -->
-<a-assets>
-<video id="Video_Asset_3" autoplay="false" transparent loop crossorigin="anonymous" src="videos/Malcolm-1.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" autoplay preload=metadata webkit-playsinline playsinline controls muted></video>
-<video id="Video_Asset_4" autoplay="false" loop crossorigin="anonymous" src="videos/Malcolm-2.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" autoplay preload=metadata webkit-playsinline playsinline controls muted></video>
-<a-asset-item id="malcolm-obj" src="models/Malcolm_Davol_Seniors.obj"></a-asset-item>
-<a-asset-item id="malcolm-mtl" src="models/Malcolm_Davol_Seniors.mtl"></a-asset-item>
-<img id="malcolm-img-1" src="models/Plaster.jpg"></img>
-<img id="malcolm-img-2" src="models/Plastic.jpg"></img>
-</a-assets>
-<!-- END: Unity Compiled Assets -->
-<!-- BEGIN: Add Image Target (marker) -->
-<!-- <a-marker id="marker" type="pattern" preset="custom" src="pattern-A.patt" url="pattern-A.patt" emitevents="true" button> -->
-<!-- END: Add Image Target (marker) -->
-
-<a-entity mindar-image-target="targetIndex: 0">
-<!-- BEGIN: Unity Compiled Objects -->
-<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.6 -1" rotation="0 0 0" color="#FFFFFF" transparent=False
-></a-video>
-<a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.001" height="0.001" position="0 0 0" rotation="0 0 0" color="#FFFFFF" transparent=True
-></a-video>
-<a-plane id="Video_3_plane" position="-1.1 0.5 -0.8" rotation="0.005 -0 -1.189" width="0.45" height="0.84375" material="src: videos/Malcolm-1.webm; transparent: true;" foo
-></a-plane>
-<a-entity id="obj_1" obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="0 0 0"></a-entity>
-<!-- END: Unity Compiled Objects -->
-</a-entity>
 
 <!-- BEGIN: Bottom HTML -->
 <!-- </a-marker>
