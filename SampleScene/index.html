@@ -46,7 +46,44 @@ init: function () {
 	
 	var Video_3 = document.querySelector("#Video_Asset_3");
 	var Video_4 = document.querySelector("#Video_Asset_4");
-	marker.addEventListener("markerFound", function (evt) {
+	
+	this.el.addEventListener('targetFound', event => {
+		markerFound = 1;
+		Video_3.play();
+		Video_4.play();
+		
+		var userAgent = window.navigator.userAgent,
+		  platform = window.navigator.platform,
+		  os = 'iP',
+		  osDesk = 'Mac';
+		if (platform.indexOf(os) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else if (platform.indexOf(osDesk) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else {
+			console.log("Video 4 not repositioned");
+		}
+	});
+	this.el.addEventListener('targetLost', event => {
+		markerFound = 0;
+		Video_3.pause();
+		Video_4.pause();
+
+		//var userAgent = window.navigator.userAgent,
+		//  platform = window.navigator.platform;
+		//alert(os);
+    });
+	/*marker.addEventListener("markerFound", function (evt) {
 		markerFound = 1;
 		Video_3.play();
 		Video_4.play();
@@ -81,7 +118,7 @@ init: function () {
 		//var userAgent = window.navigator.userAgent,
 		//  platform = window.navigator.platform;
 		//alert(os);
-	});
+	});*/
 	button.addEventListener("click", function(evt){
 		console.log("button clicked")
 		if(Video_3.muted==true){
