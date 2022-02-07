@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 
 <!-- include aframe -->
-<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<!-- <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> -->
 <!-- include ar.js -->
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
+<!-- <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script> -->
 
 <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
 <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -35,10 +35,13 @@ init: function () {
 	var button = document.querySelector("#mutebutton");
 	
 	var intro_1 = document.querySelector("#intro_1");
+	var intro_1_cont = document.querySelector("#intro_1_cont");
 	var intro_1_parent = document.querySelector("#intro_1_parent");
 	var intro_2 = document.querySelector("#intro_2");
+	var intro_2_cont = document.querySelector("#intro_2_cont");
 	var intro_2_parent = document.querySelector("#intro_2_parent");
 	var intro_3 = document.querySelector("#intro_3");
+	var intro_3_cont = document.querySelector("#intro_3_cont");
 	var intro_3_parent = document.querySelector("#intro_3_parent");
 	
 	var Video_3 = document.querySelector("#Video_Asset_3");
@@ -143,6 +146,24 @@ init: function () {
 		//intro_1.style.visibility = 'hidden';
 		//intro_1.style.visibility = 'visible';
 	});
+	intro_1_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_1_parent.parentNode.removeChild( intro_1_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_2_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_2_parent.parentNode.removeChild( intro_2_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_3_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_3_parent.parentNode.removeChild( intro_3_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
 },
 tick: function (totalTime, deltaTime) {
 	var dTime = deltaTime / 1000;
@@ -193,7 +214,7 @@ tick: function (totalTime, deltaTime) {
 		<input type="image" id="intro_3" src="../SampleScene/images/intro_3.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width:50%; max-height:50%; width:auto height:auto'>
 		</input>
 	</div>
-	<input type="image" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	<input type="image" id="intro_3_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
 	</input>
 </div>
 
@@ -208,7 +229,7 @@ tick: function (totalTime, deltaTime) {
 		<input type="image" id="intro_2" src="../SampleScene/images/intro_2.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width:50%; max-height:50%; width:auto height:auto'>
 		</input>
 	</div>
-	<input type="image" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	<input type="image" id="intro_2_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
 	</input>
 </div>
 
@@ -219,7 +240,7 @@ tick: function (totalTime, deltaTime) {
 		<input type="image" id="intro_1" src="../SampleScene/images/intro_1.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0px auto 0px auto; max-width:100%; max-height:100%; width:auto height:auto'>
 		</input>
 	</div>
-	<input type="image" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	<input type="image" id="intro_1_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
 	</input>
 </div>
 
