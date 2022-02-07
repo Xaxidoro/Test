@@ -5,7 +5,7 @@
 <!-- <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> -->
 <!-- include ar.js -->
 <!-- <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script> -->
-
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
 <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
@@ -289,7 +289,6 @@ tick: function (totalTime, deltaTime) {
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'> -->
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'> -->
 <a-scene mindar-image="imageTargetSrc: ./avenues.mind; uiError=no; uiLoading=no; uiScanning=no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-<a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
 <!-- END: Middle HTML -->
 
@@ -302,6 +301,8 @@ tick: function (totalTime, deltaTime) {
 <img id="malcolm-img-1" src="models/Plaster.jpg"></img>
 <img id="malcolm-img-2" src="models/Plastic.jpg"></img>
 </a-assets>
+
+<a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
 <!-- <a-marker id="marker" type="pattern" preset="custom" src="pattern-A.patt" url="pattern-A.patt" emitevents="true" button> -->
@@ -321,7 +322,7 @@ tick: function (totalTime, deltaTime) {
 
 <!-- BEGIN: Bottom HTML -->
 <!-- </a-marker>
-        <a-entity camera></a-entity> -->
-        </a-scene>
+<a-entity camera></a-entity> -->
+</a-scene>
 </body>
 </html><!-- END: Bottom HTML -->
