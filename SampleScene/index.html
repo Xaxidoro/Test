@@ -19,6 +19,216 @@
 <!-- BEGIN: Unity Compiled Events -->
 <script>
 var markerFound = 0;
+AFRAME.registerComponent("foo", {
+	init: function() {
+		this.el.addEventListener("materialtextureloaded", e => {
+			let material = this.el.getObject3D("mesh").material;
+			material.map.format = THREE.RGBAFormat;
+			material.map.needsUpdate = true;
+		});
+	}
+});
+AFRAME.registerComponent('button', {
+init: function () {
+	var elem = document.documentElement;
+	var marker = document.querySelector("#marker");
+	var fullbutton = document.querySelector("#fullscreen");
+	var button = document.querySelector("#mutebutton");
+	
+	var intro_1 = document.querySelector("#intro_1");
+	var intro_1_cont = document.querySelector("#intro_1_cont");
+	var intro_1_parent = document.querySelector("#intro_1_parent");
+	var intro_2 = document.querySelector("#intro_2");
+	var intro_2_cont = document.querySelector("#intro_2_cont");
+	var intro_2_parent = document.querySelector("#intro_2_parent");
+	var intro_3 = document.querySelector("#intro_3");
+	var intro_3_cont = document.querySelector("#intro_3_cont");
+	var intro_3_parent = document.querySelector("#intro_3_parent");
+	
+	var Video_3 = document.querySelector("#Video_Asset_3");
+	var Video_4 = document.querySelector("#Video_Asset_4");
+	
+	this.el.addEventListener('targetFound', event => {
+		markerFound = 1;
+		Video_3.play();
+		Video_4.play();
+		
+		var userAgent = window.navigator.userAgent,
+		  platform = window.navigator.platform,
+		  os = 'iP',
+		  osDesk = 'Mac';
+		if (platform.indexOf(os) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else if (platform.indexOf(osDesk) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else {
+			console.log("Video 4 not repositioned");
+		}
+	});
+	this.el.addEventListener('targetLost', event => {
+		markerFound = 0;
+		Video_3.pause();
+		Video_4.pause();
+
+		//var userAgent = window.navigator.userAgent,
+		//  platform = window.navigator.platform;
+		//alert(os);
+    });
+	/*marker.addEventListener("markerFound", function (evt) {
+		markerFound = 1;
+		Video_3.play();
+		Video_4.play();
+		
+		var userAgent = window.navigator.userAgent,
+		  platform = window.navigator.platform,
+		  os = 'iP',
+		  osDesk = 'Mac';
+		if (platform.indexOf(os) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else if (platform.indexOf(osDesk) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else {
+			console.log("Video 4 not repositioned");
+		}
+	});
+	marker.addEventListener("markerLost", function (evt) {
+		markerFound = 0;
+		Video_3.pause();
+		Video_4.pause();
+
+		//var userAgent = window.navigator.userAgent,
+		//  platform = window.navigator.platform;
+		//alert(os);
+	});*/
+	button.addEventListener("click", function(evt){
+		console.log("button clicked")
+		if(Video_3.muted==true){
+			button.innerHTML="Mute";
+			//Video_3.play();
+			//Video_4.play();
+			Video_3.muted=false;
+			Video_4.muted=false;
+		}else{
+			button.innerHTML="Unmute";
+			//Video_3.play();
+			//Video_4.play();
+			Video_3.muted=true;
+			Video_4.muted=true;
+		}
+	});
+	fullbutton.addEventListener("click", function (evt) {
+		if (fullscreen == 0) {
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			} else if (elem.mozRequestFullScreen) {
+				/* Firefox */
+				elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) {
+				/* Chrome, Safari and Opera */
+				elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) {
+				/* IE/Edge */
+				elem.msRequestFullscreen();
+			}
+			fullbutton.setAttribute("src", "../exit_fullscreen.png");
+			fullscreen = 1;
+		} else {
+			if (document.exitFullscreen) {
+				document.exitFullscreen();
+			} else if (document.webkitExitFullscreen) {
+				document.webkitExitFullscreen();
+			} else if (document.mozCancelFullScreen) {
+				document.mozCancelFullScreen();
+			} else if (document.msExitFullscreen) {
+				document.msExitFullscreen();
+			}
+			fullbutton.setAttribute("src", "../fullscreen.png");
+			fullscreen = 0;
+		}
+	});
+	intro_1.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_1_parent.parentNode.removeChild( intro_1_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_2.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_2_parent.parentNode.removeChild( intro_2_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_3.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_3_parent.parentNode.removeChild( intro_3_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_1_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_1_parent.parentNode.removeChild( intro_1_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_2_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_2_parent.parentNode.removeChild( intro_2_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_3_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_3_parent.parentNode.removeChild( intro_3_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+},
+tick: function (totalTime, deltaTime) {
+	var dTime = deltaTime / 1000;
+
+	if (markerFound == 1) {
+	}
+
+	function bezierEvaluate(p0, p1, p2, p3, t) {
+		var u = (1 - t);
+		var uu = u * u;
+		var uuu = u * u * u;
+		var tt = t * t;
+		var ttt = t * t * t;
+		//B(t) = (1-t)^3*P0 + 3*(1-t)^2*t*P1 + 3*(1-t)*t^2*P2 + t^3*P3 , 0 < t < 1
+		return (uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3);
+
+	}
+	function bezierPath(p0, p1, p2, p3, t) {
+		return new THREE.Vector3(
+			bezierEvaluate(p0.x, p1.x, p2.x, p3.x, t),
+			bezierEvaluate(p0.y, p1.y, p2.y, p3.y, t),
+			bezierEvaluate(p0.z, p1.z, p2.z, p3.z, t)
+		);
+	}
+
+}
+});
 </script>
 <!-- END: Unity Compiled Events -->
 </head>
@@ -80,7 +290,7 @@ var markerFound = 0;
 </div>
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'> -->
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'> -->
-<a-scene mindar-image="imageTargetSrc: ./avenues.mind; uiScanning=no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+<a-scene mindar-image="imageTargetSrc: ./avenues.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
 <!-- END: Middle HTML -->
 
