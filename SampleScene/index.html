@@ -67,19 +67,13 @@ init: function () {
 		  os = 'iP',
 		  osDesk = 'Mac';
 		if (platform.indexOf(os) != -1) {
-			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
-			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
-			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
-			document.getElementById("Video_3").setAttribute('width','0.45');
-			document.getElementById("Video_3").setAttribute('height','0.84375');
-			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+			//document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			//document.getElementById("Video_3").setAttribute('width','0.45');
+			//document.getElementById("Video_3").setAttribute('height','0.84375');
 		} else if (platform.indexOf(osDesk) != -1) {
-			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
-			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
-			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
-			document.getElementById("Video_3").setAttribute('width','0.45');
-			document.getElementById("Video_3").setAttribute('height','0.84375');
-			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+			//document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			//document.getElementById("Video_3").setAttribute('width','0.45');
+			//document.getElementById("Video_3").setAttribute('height','0.84375');
 		} else {
 			console.log("Video 4 not repositioned");
 		}
@@ -321,13 +315,13 @@ tick: function (totalTime, deltaTime) {
 
 <a-entity id="mytarget" button mindar-image-target="targetIndex: 0">
 <!-- BEGIN: Unity Compiled Objects -->
-<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.6 0" rotation="0 0 0" color="#FFFFFF" transparent=False
+<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.0 -1" rotation="0 0 0" color="#FFFFFF" transparent=False
 ></a-video>
 <a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.001" height="0.001" position="0 0 0" rotation="0 0 0" color="#FFFFFF" transparent=True
 ></a-video>
-<a-plane id="Video_3_plane" position="-1.1 0.5 -0.8" rotation="0.005 -0 -1.189" width="0.45" height="0.84375" material="src: videos/Malcolm-1.webm; transparent: true;" foo
+<a-plane id="Video_3_plane" position="-1.1 0.0 -0.8" rotation="0.005 -0 -1.189" width="0.45" height="0.84375" material="src: videos/Malcolm-1.webm; transparent: true;" foo
 ></a-plane>
-<a-entity id="obj_1" obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="0 0 0"></a-entity>
+<a-entity id="obj_1" obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 -0.3 0" rotation="0 0 0"></a-entity>
 <!-- END: Unity Compiled Objects -->
 </a-entity>
 
