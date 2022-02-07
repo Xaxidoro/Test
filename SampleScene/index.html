@@ -1,9 +1,15 @@
 <!-- BEGIN: Top HTML -->
 <!DOCTYPE html>
+
 <!-- include aframe -->
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <!-- include ar.js -->
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
+
 
 <!-- to load .ply model -->
 <script src="https://rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.loaders.min.js"></script>
@@ -223,8 +229,10 @@ tick: function (totalTime, deltaTime) {
 	</input>
 </div>
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'> -->
-    <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'>
-    <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'> -->
+<a-scene mindar-image="imageTargetSrc: avenues.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
 <!-- END: Middle HTML -->
 
 <!-- BEGIN: Unity Compiled Assets -->
@@ -238,9 +246,10 @@ tick: function (totalTime, deltaTime) {
 </a-assets>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
-<a-marker id="marker" type="pattern" preset="custom" src="pattern-A.patt" url="pattern-A.patt" emitevents="true" button>
+<!-- <a-marker id="marker" type="pattern" preset="custom" src="pattern-A.patt" url="pattern-A.patt" emitevents="true" button> -->
 <!-- END: Add Image Target (marker) -->
 
+<a-entity mindar-image-target="targetIndex: 0">
 <!-- BEGIN: Unity Compiled Objects -->
 <a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.6 -1" rotation="0 0 0" color="#FFFFFF" transparent=False
 ></a-video>
@@ -250,9 +259,10 @@ tick: function (totalTime, deltaTime) {
 ></a-plane>
 <a-entity id="obj_1" obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="0 0 0"></a-entity>
 <!-- END: Unity Compiled Objects -->
+</a-entity>
 
 <!-- BEGIN: Bottom HTML -->
-</a-marker>
+<!-- </a-marker> -->
         <a-entity camera></a-entity>
         </a-scene>
 </body>
