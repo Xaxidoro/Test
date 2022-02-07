@@ -1,24 +1,331 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
-  </head>
-  <body>
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/card.png" />
-        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
-      </a-assets>
+<!-- BEGIN: Top HTML -->
+<!DOCTYPE html>
 
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+<head>
+<!-- include aframe -->
+<!-- <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> -->
+<!-- include ar.js -->
+<!-- <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script> -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-      </a-entity>
-    </a-scene>
-  </body>
-</html>
+
+<!-- to load .ply model -->
+<script src="https://rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.loaders.min.js"></script>
+
+<!-- END: Top HTML -->
+<!-- BEGIN: Unity Compiled Events -->
+<script>
+var markerFound = 0;
+AFRAME.registerComponent("foo", {
+	init: function() {
+		this.el.addEventListener("materialtextureloaded", e => {
+			let material = this.el.getObject3D("mesh").material;
+			material.map.format = THREE.RGBAFormat;
+			material.map.needsUpdate = true;
+		});
+	}
+});
+AFRAME.registerComponent('button', {
+init: function () {
+	var elem = document.documentElement;
+	var marker = document.querySelector("#marker");
+	var fullbutton = document.querySelector("#fullscreen");
+	var button = document.querySelector("#mutebutton");
+	
+	var intro_1 = document.querySelector("#intro_1");
+	var intro_1_cont = document.querySelector("#intro_1_cont");
+	var intro_1_parent = document.querySelector("#intro_1_parent");
+	var intro_2 = document.querySelector("#intro_2");
+	var intro_2_cont = document.querySelector("#intro_2_cont");
+	var intro_2_parent = document.querySelector("#intro_2_parent");
+	var intro_3 = document.querySelector("#intro_3");
+	var intro_3_cont = document.querySelector("#intro_3_cont");
+	var intro_3_parent = document.querySelector("#intro_3_parent");
+	
+	var Video_3 = document.querySelector("#Video_Asset_3");
+	var Video_4 = document.querySelector("#Video_Asset_4");
+	
+	this.el.addEventListener('targetFound', event => {
+		markerFound = 1;
+		Video_3.play();
+		Video_4.play();
+		
+		var userAgent = window.navigator.userAgent,
+		  platform = window.navigator.platform,
+		  os = 'iP',
+		  osDesk = 'Mac';
+		if (platform.indexOf(os) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else if (platform.indexOf(osDesk) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else {
+			console.log("Video 4 not repositioned");
+		}
+	});
+	this.el.addEventListener('targetLost', event => {
+		markerFound = 0;
+		Video_3.pause();
+		Video_4.pause();
+
+		//var userAgent = window.navigator.userAgent,
+		//  platform = window.navigator.platform;
+		//alert(os);
+    });
+	/*marker.addEventListener("markerFound", function (evt) {
+		markerFound = 1;
+		Video_3.play();
+		Video_4.play();
+		
+		var userAgent = window.navigator.userAgent,
+		  platform = window.navigator.platform,
+		  os = 'iP',
+		  osDesk = 'Mac';
+		if (platform.indexOf(os) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else if (platform.indexOf(osDesk) != -1) {
+			document.getElementById("Video_4").setAttribute('position','0 0.6 -2.5');
+			document.getElementById("Video_3_plane").setAttribute('position','-1.1 0.5 -2.3');
+			document.getElementById("Video_3").setAttribute('position','-1.1 0.5 -2.29');
+			document.getElementById("Video_3").setAttribute('width','0.45');
+			document.getElementById("Video_3").setAttribute('height','0.84375');
+			document.getElementById("obj_1").setAttribute('position','0 0.7 -1.5');
+		} else {
+			console.log("Video 4 not repositioned");
+		}
+	});
+	marker.addEventListener("markerLost", function (evt) {
+		markerFound = 0;
+		Video_3.pause();
+		Video_4.pause();
+
+		//var userAgent = window.navigator.userAgent,
+		//  platform = window.navigator.platform;
+		//alert(os);
+	});*/
+	button.addEventListener("click", function(evt){
+		console.log("button clicked")
+		if(Video_3.muted==true){
+			button.innerHTML="Mute";
+			//Video_3.play();
+			//Video_4.play();
+			Video_3.muted=false;
+			Video_4.muted=false;
+		}else{
+			button.innerHTML="Unmute";
+			//Video_3.play();
+			//Video_4.play();
+			Video_3.muted=true;
+			Video_4.muted=true;
+		}
+	});
+	fullbutton.addEventListener("click", function (evt) {
+		if (fullscreen == 0) {
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			} else if (elem.mozRequestFullScreen) {
+				/* Firefox */
+				elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) {
+				/* Chrome, Safari and Opera */
+				elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) {
+				/* IE/Edge */
+				elem.msRequestFullscreen();
+			}
+			fullbutton.setAttribute("src", "../exit_fullscreen.png");
+			fullscreen = 1;
+		} else {
+			if (document.exitFullscreen) {
+				document.exitFullscreen();
+			} else if (document.webkitExitFullscreen) {
+				document.webkitExitFullscreen();
+			} else if (document.mozCancelFullScreen) {
+				document.mozCancelFullScreen();
+			} else if (document.msExitFullscreen) {
+				document.msExitFullscreen();
+			}
+			fullbutton.setAttribute("src", "../fullscreen.png");
+			fullscreen = 0;
+		}
+	});
+	intro_1.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_1_parent.parentNode.removeChild( intro_1_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_2.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_2_parent.parentNode.removeChild( intro_2_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_3.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_3_parent.parentNode.removeChild( intro_3_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_1_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_1_parent.parentNode.removeChild( intro_1_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_2_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_2_parent.parentNode.removeChild( intro_2_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+	intro_3_cont.addEventListener("click", function (evt) {
+		console.log("BUTTON INTRO clicked");
+		intro_3_parent.parentNode.removeChild( intro_3_parent );
+		//intro_1.style.visibility = 'hidden';
+		//intro_1.style.visibility = 'visible';
+	});
+},
+tick: function (totalTime, deltaTime) {
+	var dTime = deltaTime / 1000;
+
+	if (markerFound == 1) {
+	}
+
+	function bezierEvaluate(p0, p1, p2, p3, t) {
+		var u = (1 - t);
+		var uu = u * u;
+		var uuu = u * u * u;
+		var tt = t * t;
+		var ttt = t * t * t;
+		//B(t) = (1-t)^3*P0 + 3*(1-t)^2*t*P1 + 3*(1-t)*t^2*P2 + t^3*P3 , 0 < t < 1
+		return (uuu * p0 + 3 * uu * t * p1 + 3 * u * tt * p2 + ttt * p3);
+
+	}
+	function bezierPath(p0, p1, p2, p3, t) {
+		return new THREE.Vector3(
+			bezierEvaluate(p0.x, p1.x, p2.x, p3.x, t),
+			bezierEvaluate(p0.y, p1.y, p2.y, p3.y, t),
+			bezierEvaluate(p0.z, p1.z, p2.z, p3.z, t)
+		);
+	}
+
+}
+});
+</script>
+<!-- END: Unity Compiled Events -->
+</head>
+
+<!-- BEGIN: Middle HTML -->
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+<div style='position: absolute; bottom: 10px; right: 30px; width:100%; text-align: center; z-index: 1;'>
+  <button id="mutebutton" style='position: absolute; bottom: 10px'>
+	  Unmute
+  </button>
+</div>
+
+<div id="intro_3_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+	<input type="image" id="intro_3_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width:300%; height:300%; z-index: 1;'>
+	</input>
+	<div style='position: absolute; bottom: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+		<input type="image" id="intro_logo_2" src="../SampleScene/images/intro_logo.png" style='position: absolute; bottom: 10%; left: 10%; max-width:20%; max-height:13%; width:auto height:auto'>
+		</input>
+	</div>
+	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
+		<input type="image" id="intro_3" src="../SampleScene/images/intro_3.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width:50%; max-height:50%; width:auto height:auto'>
+		</input>
+	</div>
+	<input type="image" id="intro_3_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	</input>
+</div>
+
+<div id="intro_2_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+	<input type="image" id="intro_2_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);width:300%; height:300%; z-index: 1;'>
+	</input>
+	<div style='position: absolute; bottom: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+		<input type="image" id="intro_logo_2" src="../SampleScene/images/intro_logo.png" style='position: absolute; bottom: 10%; left: 10%; max-width:20%; max-height:13%; width:auto height:auto'>
+		</input>
+	</div>
+	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
+		<input type="image" id="intro_2" src="../SampleScene/images/intro_2.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width:50%; max-height:50%; width:auto height:auto'>
+		</input>
+	</div>
+	<input type="image" id="intro_2_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	</input>
+</div>
+
+<div id="intro_1_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+	<input type="image" id="intro_1_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width:300%; height:300%; z-index: 1;'>
+	</input>
+	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
+		<input type="image" id="intro_1" src="../SampleScene/images/intro_1.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0px auto 0px auto; max-width:100%; max-height:100%; width:auto height:auto'>
+		</input>
+	</div>
+	<input type="image" id="intro_1_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	</input>
+</div>
+
+
+<div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'>
+	<input type="image" id="fullscreen" src="../fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'>
+	</input>
+</div>
+<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'> -->
+<!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'> -->
+<a-scene mindar-image="imageTargetSrc: ./avenues.mind; uiScanning=no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+<a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
+<!-- END: Middle HTML -->
+
+<!-- BEGIN: Unity Compiled Assets -->
+<a-assets>
+<video id="Video_Asset_3" autoplay="false" transparent loop crossorigin="anonymous" src="videos/Malcolm-1.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" autoplay preload=metadata webkit-playsinline playsinline controls muted></video>
+<video id="Video_Asset_4" autoplay="false" loop crossorigin="anonymous" src="videos/Malcolm-2.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" autoplay preload=metadata webkit-playsinline playsinline controls muted></video>
+<a-asset-item id="malcolm-obj" src="models/Malcolm_Davol_Seniors.obj"></a-asset-item>
+<a-asset-item id="malcolm-mtl" src="models/Malcolm_Davol_Seniors.mtl"></a-asset-item>
+<img id="malcolm-img-1" src="models/Plaster.jpg"></img>
+<img id="malcolm-img-2" src="models/Plastic.jpg"></img>
+</a-assets>
+
+<a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+<!-- END: Unity Compiled Assets -->
+<!-- BEGIN: Add Image Target (marker) -->
+<!-- <a-marker id="marker" type="pattern" preset="custom" src="pattern-A.patt" url="pattern-A.patt" emitevents="true" button> -->
+<!-- END: Add Image Target (marker) -->
+
+<a-entity id="mytarget" button mindar-image-target="targetIndex: 0">
+<!-- BEGIN: Unity Compiled Objects -->
+<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.6 -1" rotation="0 0 0" color="#FFFFFF" transparent=False
+></a-video>
+<a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.001" height="0.001" position="0 0 0" rotation="0 0 0" color="#FFFFFF" transparent=True
+></a-video>
+<a-plane id="Video_3_plane" position="-1.1 0.5 -0.8" rotation="0.005 -0 -1.189" width="0.45" height="0.84375" material="src: videos/Malcolm-1.webm; transparent: true;" foo
+></a-plane>
+<a-entity id="obj_1" obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="0 0 0"></a-entity>
+<!-- END: Unity Compiled Objects -->
+</a-entity>
+
+<!-- BEGIN: Bottom HTML -->
+<!-- </a-marker>
+<a-entity camera></a-entity> -->
+</a-scene>
+</body>
+</html><!-- END: Bottom HTML -->
