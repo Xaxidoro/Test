@@ -15,6 +15,14 @@
 <!-- to load .ply model -->
 <!-- <script src="https://rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.loaders.min.js"></script> -->
 
+<style>
+  #example-scanning-overlay {
+  }
+  #example-scanning-overlay.hidden {
+	display: none;
+  }
+</style>
+
 <!-- END: Top HTML -->
 <!-- BEGIN: Unity Compiled Events -->
 <script>
@@ -290,7 +298,7 @@ tick: function (totalTime, deltaTime) {
 </div>
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'> -->
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'> -->
-<a-scene mindar-image="imageTargetSrc: ./avenues.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+<a-scene mindar-image="uiScanning: #example-scanning-overlay; imageTargetSrc: ./avenues.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
 <!-- END: Middle HTML -->
 
