@@ -236,39 +236,69 @@ tick: function (totalTime, deltaTime) {
 <!-- BEGIN: Middle HTML -->
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 
+<div style='position: absolute; bottom: 10px; right: 30px; width:100%; text-align: center; z-index: 1;'>
+  <button id="mutebutton" style='position: absolute; bottom: 10px'>
+	  Unmute
+  </button>
+</div>
+
+<div id="intro_3_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+	<input type="image" id="intro_3_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width:300%; height:300%; z-index: 1;'>
+	</input>
+	<div style='position: absolute; bottom: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+		<input type="image" id="intro_logo_2" src="../SampleScene/images/intro_logo.png" style='position: absolute; bottom: 10%; left: 10%; max-width:20%; max-height:13%; width:auto height:auto'>
+		</input>
+	</div>
+	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
+		<input type="image" id="intro_3" src="../SampleScene/images/intro_3.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width:50%; max-height:50%; width:auto height:auto'>
+		</input>
+	</div>
+	<input type="image" id="intro_3_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	</input>
+</div>
+
+<div id="intro_2_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+	<input type="image" id="intro_2_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);width:300%; height:300%; z-index: 1;'>
+	</input>
+	<div style='position: absolute; bottom: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+		<input type="image" id="intro_logo_2" src="../SampleScene/images/intro_logo.png" style='position: absolute; bottom: 10%; left: 10%; max-width:20%; max-height:13%; width:auto height:auto'>
+		</input>
+	</div>
+	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
+		<input type="image" id="intro_2" src="../SampleScene/images/intro_2.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width:50%; max-height:50%; width:auto height:auto'>
+		</input>
+	</div>
+	<input type="image" id="intro_2_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	</input>
+</div>
+
+<div id="intro_1_parent" style='position: absolute; top: 0px; left: 0px; width:100%; height:100%; text-align: center; z-index: 1;'>
+	<input type="image" id="intro_1_bg" src="../SampleScene/images/bg.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width:300%; height:300%; z-index: 1;'>
+	</input>
+	<div style='position: relative; bottom: 0px; left: 0px; width:100%; height:100%; text-align: right; z-index: 1;'>
+		<input type="image" id="intro_1" src="../SampleScene/images/intro_1.png" style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0px auto 0px auto; max-width:100%; max-height:100%; width:auto height:auto'>
+		</input>
+	</div>
+	<input type="image" id="intro_1_cont" src="../SampleScene/images/continue.png" style='position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); max-width:20%; max-height:10%; z-index: 1; width:auto height:auto'>
+	</input>
+</div>
+
+
+<div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'>
+	<input type="image" id="fullscreen" src="../fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'>
+	</input>
+</div>
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: video; sourceUrl:../../data/videos/headtracking.mp4;'> -->
 <!-- <a-scene embedded arjs='debugUIEnabled: false; sourceType: webcam' vr-mode-ui='enabled: false'> -->
 <a-scene mindar-image="imageTargetSrc: ./avenues.mind; uiScanning=no" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
 <!-- END: Middle HTML -->
 
-<!-- BEGIN: Unity Compiled Assets -->
-<a-assets>
-<video id="Video_Asset_3" autoplay="false" transparent loop crossorigin="anonymous" src="videos/Malcolm-1.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" autoplay preload=metadata webkit-playsinline playsinline controls muted></video>
-<video id="Video_Asset_4" autoplay="false" loop crossorigin="anonymous" src="videos/Malcolm-2.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" autoplay preload=metadata webkit-playsinline playsinline controls muted></video>
-<a-asset-item id="malcolm-obj" src="models/Malcolm_Davol_Seniors.obj"></a-asset-item>
-<a-asset-item id="malcolm-mtl" src="models/Malcolm_Davol_Seniors.mtl"></a-asset-item>
-<img id="malcolm-img-1" src="models/Plaster.jpg"></img>
-<img id="malcolm-img-2" src="models/Plastic.jpg"></img>
-</a-assets>
-
 <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 <!-- END: Unity Compiled Assets -->
 <!-- BEGIN: Add Image Target (marker) -->
 <!-- <a-marker id="marker" type="pattern" preset="custom" src="pattern-A.patt" url="pattern-A.patt" emitevents="true" button> -->
 <!-- END: Add Image Target (marker) -->
-
-<a-entity id="mytarget" button mindar-image-target="targetIndex: 0">
-<!-- BEGIN: Unity Compiled Objects -->
-<a-video src="#Video_Asset_4" id="Video_4" play-on-window-click class="intersectable" width="1.5" height="0.84375" position="0 0.6 -1" rotation="0 0 0" color="#FFFFFF" transparent=False
-></a-video>
-<a-video src="#Video_Asset_3" id="Video_3" play-on-window-click class="intersectable" width="0.001" height="0.001" position="0 0 0" rotation="0 0 0" color="#FFFFFF" transparent=True
-></a-video>
-<a-plane id="Video_3_plane" position="-1.1 0.5 -0.8" rotation="0.005 -0 -1.189" width="0.45" height="0.84375" material="src: videos/Malcolm-1.webm; transparent: true;" foo
-></a-plane>
-<a-entity id="obj_1" obj-model="obj: #malcolm-obj; mtl: #malcolm-mtl" class="intersectable" scale="0.011 0.011 0.011" position="0 0.7 0" rotation="0 0 0"></a-entity>
-<!-- END: Unity Compiled Objects -->
-</a-entity>
 
 <!-- BEGIN: Bottom HTML -->
 <!-- </a-marker>
